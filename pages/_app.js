@@ -4,7 +4,7 @@ import '../styles/globals.css'
 function MyApp({ Component, pageProps }) {
   return (
     <ChakraProvider>
-      <Container my={10}>
+      <Container my={10} maxW={"container.lg"}>
         <Component {...pageProps} />
       </Container>
     </ChakraProvider>
