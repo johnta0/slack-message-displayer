@@ -1,7 +1,7 @@
-import { FormControl, FormLabel, Input } from "@chakra-ui/react";
+import { Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
 import { useState } from "react";
 
-export default function ParameterForm(props) {
+export default function ParameterForm({ handleSendParams }) {
   const [channelName, setChannelName] = useState('');
   const [date, setDate] = useState('');
 
@@ -9,20 +9,22 @@ export default function ParameterForm(props) {
   const handleDateChange = (e) => { setDate(e.target.value) };
 
   return (
-    <FormControl isInvalid={isError}>
-      <FormLabel>Channel Name</FormLabel>
-      <Input 
-        placeholder="johnmemo"
-        type={'text'}
-        value={channelName}
-        onChange={handleChannelNameChange}
-      />
-      <FormLabel>Date</FormLabel>
-      <Input
-        type={"date"}
-        value={date}
-        onChange={handleDateChange}
-      />
-    </FormControl>
+    <FormControl>
+        <FormLabel>Channel Name</FormLabel>
+        <Input
+          placeholder="johnmemo"
+          type={'text'}
+          value={channelName}
+          onChange={handleChannelNameChange}
+        />
+        <FormLabel>Date</FormLabel>
+        <Input
+          type={"date"}
+          value={date}
+          min="2013-08-01"
+          onChange={handleDateChange}
+        />
+        <Button onClick={handleSendParams}>Go</Button>
+      </FormControl>
   );
 }
